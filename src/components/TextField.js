@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     height: 2px;
     background-color: gray;
     z-index:4;
-    transition: 0.3s ease-in all;
+    transition: 0.2s ease-in all;
   }
 
   .input{
@@ -36,6 +36,8 @@ const Wrapper = styled.div`
     border:none;
     padding: 20px 7px 15px 35px;
     outline: none;
+    font-size: 16px;
+    z-index: 2;
   }
 
   .containerIcon{
@@ -51,8 +53,13 @@ const Wrapper = styled.div`
     position: absolute;
     left: 35px;
     top: 13px;
-    transition: 0.3s ease-in all;
+    transition: 0.2s ease-in all;
     color: gray;
+    z-index: 1;
+    -webkit-user-select: none; /* Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+/Edge */
+user-select: none; /* Standard */
   }
 
   .container:focus-within > .underline{
@@ -93,10 +100,10 @@ function TextField(props) {
   if(props.disabled){
     return (
       <Wrapper>
-      <div className="overAll">
+      <div style={{opacity : "0.7"}} className="overAll">
         <form className="container">
-          <i className="material-icons containerIcon">calendar_today</i>
-          <label>{props.text}</label>
+          <i style={{color: "#b0b0b0"}} className="material-icons containerIcon">calendar_today</i>
+          <label style={{color: "#b0b0b0"}}>{props.text}</label>
         </form>
       </div>
     </Wrapper>
@@ -109,7 +116,7 @@ function TextField(props) {
         <form className="container">
           <input type="text" value={inputValue} onChange={(e) =>changeInput(e)} className="input" required/>
           <i className="material-icons containerIcon">calendar_today</i>
-          <label>{props.text}</label>
+          <label >{props.text}</label>
           <div className="underline"></div>
         </form>
       </div>
