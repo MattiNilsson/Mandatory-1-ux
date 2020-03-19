@@ -75,6 +75,21 @@ input:focus ~ .fakeCheckbox > .effect{
   background-color:gray;
   transition: 0.2 all linear;
 }
+input:hover ~ .fakeCheckbox > .effect{
+  position: absolute;
+  left: -9px;
+  top: -9px;
+  z-index: -1;
+  opacity: 0.2;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background-color:gray;
+  transition: 0.2 all linear;
+}
+input:hover:checked ~ .fakeCheckbox > .effect{
+  background-color:#834aed;
+}
 input:focus:checked ~ .fakeCheckbox > .effect{
   background-color:#834aed;
 }

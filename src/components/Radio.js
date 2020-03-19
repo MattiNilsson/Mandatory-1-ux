@@ -58,7 +58,17 @@ input:focus ~ .fakeRadio > .effect{
   height: 30px;
   border-radius: 20px;
   background-color:gray;
-  transition: 0.2 all linear;
+  transition: 0.2 all ease-out;
+}
+input:hover ~ .fakeRadio > .effect{
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background-color:gray;
+  transition: 0.2 all ease-out;
 }
 input:focus:checked ~ .fakeRadio > .effect{
   background-color:#834aed;
