@@ -25,7 +25,7 @@ const Wrapper = styled.div`
     height: 2px;
     background-color: gray;
     z-index:4;
-    transition: 0.2s ease-in all;
+    transition: 0.2s ease-out all;
   }
 
   .input{
@@ -53,7 +53,7 @@ const Wrapper = styled.div`
     position: absolute;
     left: 35px;
     top: 13px;
-    transition: 0.2s ease-in all;
+    transition: 0.2s ease-out all;
     color: gray;
     z-index: 1;
     -webkit-user-select: none; /* Safari */        

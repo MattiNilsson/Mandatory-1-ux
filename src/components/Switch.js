@@ -2,13 +2,11 @@ import React, {useState} from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-
 .overAll{
   display:flex;
   justify-content: center;
   width: 200px;
   height: 50px;
-  margin: 10px;
   z-index:1;
 }
 form{
