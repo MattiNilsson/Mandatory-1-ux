@@ -17,7 +17,15 @@ const Wrapper = styled.div`
     height: 50px;
     border-radius: 5px 5px 0px 0px;
   }
-
+  .overAll:hover > .container{
+    background-color: #b8b8b8;
+  }
+  .overAll:hover > .disabled{
+    background-color: lightgray !important;
+  }
+  .overAll:hover:not(focus-within) > .container > .underline{
+    background-color: #4d4d4d;
+  }
   .underline{
     position: absolute;
     bottom:0px;
@@ -63,7 +71,7 @@ user-select: none; /* Standard */
   }
 
   .container:focus-within > .underline{
-    background-color: #7d48e0;
+    background-color: #7d48e0 !important;
     height: 2.5px;
     z-index: 2;
   }
@@ -73,6 +81,9 @@ user-select: none; /* Standard */
     top: 6px;
     left: 35px;
     font-size: 10px;
+  }
+  .container:focus-within{
+    background-color: #b8b8b8;
   }
 
   .input:focus:valid ~ label{
@@ -100,13 +111,14 @@ function TextField(props) {
   if(props.disabled){
     return (
       <Wrapper>
-      <div style={{opacity : "0.7"}} className="overAll">
-        <form className="container">
-          <i style={{color: "#b0b0b0"}} className="material-icons containerIcon">calendar_today</i>
-          <label style={{color: "#b0b0b0"}}>{props.text}</label>
-        </form>
-      </div>
-    </Wrapper>
+        <div style={{opacity : "0.7"}} className="overAll">
+          <form className="container disabled">
+            <input type="text" disabled value={inputValue} onChange={(e) =>changeInput(e)} className="input" required/>
+            <i style={{color: "#b0b0b0"}} className="material-icons containerIcon">calendar_today</i>
+            <label style={{color: "#b0b0b0"}}>{props.text}</label>
+          </form>
+        </div>
+      </Wrapper>
     )
   }
 

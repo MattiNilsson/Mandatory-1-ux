@@ -44,8 +44,23 @@ box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.46);
   transition: all 0.1s ease-in;
 }
 .effect{
+  border-radius: 100px;
   transition: all 0.1s ease-in;
-  opacity: 0;
+  opacity: 0.2;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: -15px;
+  top: -15px;
+  z-index: -1;
+}
+form:hover > .switch > .effect{
+  opacity: 0.2;
+  background-color:gray;
+}
+form:hover > input:checked ~ .switch > .effect{
+  opacity: 0.2;
+  background-color:#834aed;
 }
 input:focus ~ .switch > .effect{
   z-index: -1;
@@ -87,7 +102,7 @@ function Switch(props){
           <form>
             <label>{props.text}</label>
             <div className="switch">
-              <div className="effect"></div>
+              
             </div>
             <div className="container"></div>
           </form>
