@@ -117,6 +117,14 @@ user-select: none; /* Standard */
     left: 35px;
     font-size: 10px;
   }
+  .focusContainer{
+    background-color: #b8b8b8 !important;
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px 5px 0px 0px;
+    transition: 0.2 linear all;
+  }
 
 `
 
@@ -130,7 +138,7 @@ function TextField(props) {
     return (
       <Wrapper>
         <div className="overAll">
-          <form className="container">
+          <form className="focusContainer">
             <i className="material-icons containerIcon">help_outline</i>
             <label className="focusLabel">{props.text}</label>
             <div className="focusUnderline"></div>
