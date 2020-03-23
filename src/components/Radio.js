@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
 
 .overAll{
-  width: 170px;
+  width: 200px;
   margin: 10px 0px 10px 0px;
 }
 .radio{
@@ -74,10 +74,56 @@ input:focus:checked ~ .fakeRadio > .effect{
   background-color:#834aed;
 }
 
+
+.focusFakeRadio{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  border: 2px solid;
+  border-color: #834aed;
+  border-radius: 12px;
+  transition: 0.2s all linear;
+}
+.focusFakeSelected{
+  width: 8px;
+  height: 8px;
+  background-color: #834aed;
+  border-radius: 100%;
+}
+.focusEffect{
+  position: absolute;
+  z-index: -1;
+  opacity: 0.2;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background-color:#834aed;
+  transition: 0.2 all ease-out;
+}
 `
 
 function Radio(props){
-  
+  if(props.focusState){
+    return(
+    <Wrapper>
+      <div className="overAll">
+        {props.options.map((radio) => {
+          return (
+          <div className="radio">
+            <div className="focusFakeRadio">
+              <div className="focusFakeSelected"></div>
+              <div className="focusEffect"></div>
+            </div>
+            <label>{radio}</label>
+          </div>
+          )
+        })}
+      </div>
+    </Wrapper>
+    )
+  }
   if(props.disabled){
     return(
       <Wrapper>

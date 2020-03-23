@@ -39,7 +39,7 @@ input:checked ~ .fakeCheckbox > .fakeSelected{
   opacity: 1;
   position: absolute;
   left: -2.5px;
-  top: -3px;
+  top: -2px;
   width: 12px;
   height: 12px;
   font-size: 17px;
@@ -93,9 +93,56 @@ input:hover:checked ~ .fakeCheckbox > .effect{
 input:focus:checked ~ .fakeCheckbox > .effect{
   background-color:#834aed;
 }
+
+
+
+.focusFakeSelected{
+  opacity: 1;
+  position: absolute;
+  left: -2.5px;
+  top: -2px;
+  width: 12px;
+  height: 12px;
+  font-size: 17px;
+  color: #834aed;
+}
+.focusFakeCheckbox{
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #834aed;
+  border-radius: 2px;
+}
+.focusEffect{
+  position: absolute;
+  left: -9px;
+  top: -9px;
+  z-index: -1;
+  opacity: 0.2;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  background-color:#834aed;
+  transition: 0.2 all linear;
+}
 `
 
 function CheckBox(props){
+  if(props.focusState){
+    return(
+      <Wrapper>
+        <div className="overAll">
+          <div className="radio">
+            <div className="focusFakeCheckbox">
+              <i class="material-icons focusFakeSelected">check_box</i>
+              <div className="focusEffect"></div>
+            </div>
+            <label>{props.name}</label>
+          </div>
+        </div>
+      </Wrapper>
+    )
+  }
   if(props.disabled){
     return(
       <Wrapper>

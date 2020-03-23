@@ -16,9 +16,10 @@ const Wrapper = styled.div`
     width: 200px;
     height: 50px;
     border-radius: 5px 5px 0px 0px;
+    transition: 0.2 linear all;
   }
   .overAll:hover > .container{
-    background-color: #b8b8b8;
+    background-color: #c2c2c2;
   }
   .overAll:hover > .disabled{
     background-color: lightgray !important;
@@ -83,7 +84,7 @@ user-select: none; /* Standard */
     font-size: 10px;
   }
   .container:focus-within{
-    background-color: #b8b8b8;
+    background-color: #b8b8b8 !important;
   }
 
   .input:focus:valid ~ label{
@@ -100,6 +101,23 @@ user-select: none; /* Standard */
     font-size: 10px;
   }
 
+  .focusUnderline{
+    position: absolute;
+    bottom:0px;
+    width: 200px;      
+    z-index:4;
+    transition: 0.2s ease-out all;
+    background-color: #7d48e0 !important;
+    height: 2.5px;
+    z-index: 2;
+  }
+  .focusLabel{
+    color: #7d48e0;
+    top: 6px;
+    left: 35px;
+    font-size: 10px;
+  }
+
 `
 
 function TextField(props) {
@@ -108,13 +126,26 @@ function TextField(props) {
   function changeInput(e){
     setInputValue(e.target.value)
   }
+  if(props.focusState){
+    return (
+      <Wrapper>
+        <div className="overAll">
+          <form className="container">
+            <i className="material-icons containerIcon">help_outline</i>
+            <label className="focusLabel">{props.text}</label>
+            <div className="focusUnderline"></div>
+          </form>
+        </div>
+      </Wrapper>
+    );
+  }
   if(props.disabled){
     return (
       <Wrapper>
         <div style={{opacity : "0.7"}} className="overAll">
           <form className="container disabled">
             <input type="text" disabled value={inputValue} onChange={(e) =>changeInput(e)} className="input" required/>
-            <i style={{color: "#b0b0b0"}} className="material-icons containerIcon">calendar_today</i>
+            <i style={{color: "#b0b0b0"}} className="material-icons containerIcon">thumb_down</i>
             <label style={{color: "#b0b0b0"}}>{props.text}</label>
           </form>
         </div>

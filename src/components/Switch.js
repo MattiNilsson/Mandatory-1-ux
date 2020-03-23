@@ -92,9 +92,60 @@ input:checked ~ .switch{
 input:checked ~ .container{
   background-color: #a482e3;
 }
+
+
+.focusSwitch{
+  position: absolute;
+  right: 15px;
+  width: 20px;
+  height:20px;
+  background-color: #834aed;
+  border-radius: 100px;
+  transition: all 0.1s ease-in;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.46);
+-moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.46);
+box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.46);
+}
+.focusEffect{
+  border-radius: 100px;
+  transition: all 0.1s ease-in;
+  opacity: 0.2;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: -15px;
+  top: -15px;
+  z-index: -1;
+  background-color:#834aed;
+}
+.focusContainer{
+  z-index: -2;
+  position: absolute;
+  right: 17.5px;
+  width: 35px;
+  height: 15px;
+  background-color: #a482e3;
+  border-radius: 100px;
+  transition: all 0.1s ease-in;
+}
 `
 
 function Switch(props){
+  if(props.focusState){
+    return(
+      <Wrapper>
+        <div className="overAll">
+          <form>
+            <label>{props.text}</label>
+            <div className="focusSwitch">
+              <div className="focusEffect"></div>
+            </div>
+            <div className="focusContainer"></div>
+          </form>
+        </div>
+      </Wrapper>
+    )
+  }
   if(props.disabled){
     return(
       <Wrapper>
