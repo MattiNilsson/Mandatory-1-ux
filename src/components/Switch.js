@@ -151,6 +151,7 @@ function Switch(props){
       <Wrapper>
         <div style={{opacity : "0.3"}} className="overAll">
           <form>
+            <input type="checkbox" disabled />
             <label>{props.text}</label>
             <div className="switch">
               

@@ -131,6 +131,7 @@ function Radio(props){
           {props.options.map((radio) => {
             return (
             <div className="radio">
+              <input type="radio" disabled name={props.name} value={radio}/>
               <div className="fakeRadio">
                 <div className="fakeSelected"></div>
                 <div className="effect"></div>

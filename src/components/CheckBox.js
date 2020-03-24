@@ -148,6 +148,7 @@ function CheckBox(props){
       <Wrapper>
         <div className="overAll" style={{opacity: "0.3"}}>
           <div className="radio">
+            <input type="checkbox" disabled name={props.name} value={"hejsan!"}/>
             <div className="fakeCheckbox">
               <i class="material-icons fakeSelected">check_box</i>
               <div className="effect"></div>

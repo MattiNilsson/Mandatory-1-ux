@@ -100,7 +100,12 @@ user-select: none; /* Standard */
     left: 35px;
     font-size: 10px;
   }
-
+  .dissLabel{
+    color: ${props => props.text === "" ? "gray" : "#7d48e0"};
+    top: ${props => props.text === "" ? "13px" : "6px"};
+    left: 35px;
+    font-size: ${props => props.text === "" ? "16px" : "10px"};
+  }
   .focusUnderline{
     position: absolute;
     bottom:0px;
@@ -139,6 +144,7 @@ function TextField(props) {
       <Wrapper>
         <div className="overAll">
           <form className="focusContainer">
+            
             <i className="material-icons containerIcon">help_outline</i>
             <label className="focusLabel">{props.text}</label>
             <div className="focusUnderline"></div>
@@ -149,12 +155,12 @@ function TextField(props) {
   }
   if(props.disabled){
     return (
-      <Wrapper>
+      <Wrapper text={inputValue}>
         <div style={{opacity : "0.7"}} className="overAll">
           <form className="container disabled">
             <input type="text" disabled value={inputValue} onChange={(e) =>changeInput(e)} className="input" required/>
             <i style={{color: "#b0b0b0"}} className="material-icons containerIcon">thumb_down</i>
-            <label style={{color: "#b0b0b0"}}>{props.text}</label>
+            <label className="dissLabel" style={{color: "#b0b0b0"}}>{props.text}</label>
           </form>
         </div>
       </Wrapper>

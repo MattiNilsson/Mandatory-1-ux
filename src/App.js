@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TextField from "./components/TextField";
 import Switch from "./components/Switch";
 import Radio from "./components/Radio";
@@ -51,14 +51,28 @@ const Wrapper = styled.div`
 h3{
   width: 200px;
 }
+button{
+  border: 2px solid black;
+  background-color: white;
+}
+button:hover{
+  opacity: 0.6;
+}
 `
 
 function App() {
+  const [disable, setDisable] = useState(false)
+
+  function disableItem(){
+    setDisable(!disable);
+  }
+
   return (
     <div className="App">
       <Wrapper>
         <div className="flex">
           <h2>Material design remake</h2>
+          <button onClick={disableItem}>Disable test here!</button>
           <div className="rowTop">
             <div className="hover"></div>
             <h3>Normal</h3>
@@ -67,21 +81,21 @@ function App() {
           </div>
           <div className="row">
             <div className="hover"></div>
-            <TextField text="TextField" disabled={false} />
+            <TextField text="TextField" disabled={disable} />
             <TextField text="text" disabled={true} />
             <TextField text="To Be Focused" focusState={true} />
           </div>
           <div className="row">
             <div className="hover"></div>
-            <Switch text="Switch" disabled={false} />
+            <Switch text="Switch" disabled={disable} />
             <Switch text="Disabled" disabled={true} />
             <Switch text="Focused" focusState={true} />
           </div>
           <div className="row">
             <div className="hover"></div>
             <div className="flex">
-              <CheckBox name="Check-" disabled={false} />
-              <CheckBox name="Box" disabled={false} />
+              <CheckBox name="Check-" disabled={disable} />
+              <CheckBox name="Box" disabled={disable} />
             </div>
             <div className="flex">
               <CheckBox name="Diss" disabled={true} />
@@ -94,7 +108,7 @@ function App() {
           </div>
           <div className="row">
             <div className="hover"></div>
-            <Radio options={["Ra-", "dio-", "buttons"]} name={"animals"} disabled={false} />
+            <Radio options={["Ra-", "dio-", "buttons"]} name={"animals"} disabled={disable} />
             <Radio options={["Games", "Movies", "Music", "Books"]} name={"Hobbies"} disabled={true} />
             <Radio options={["focused"]} name={"Hobbies"} focusState={true} />
           </div>
